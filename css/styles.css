@@ -1,3 +1,41 @@
+.cajita {
+  width: 49%;
+  height: 150px;
+  margin: 5px;
+  background: gray;
+  padding: 2px;
+  display: inline-block;
+}
+.cajita span {
+  background: #343a40;
+  color: white;
+  display: block;
+  padding: 5px;
+  text-align: center;
+}
+.cajita p {
+  font-size: 13px;
+  text-align: justify;
+  margin: 5px;
+  width: 240px;
+  height: 80px;
+  display: inherit;
+}
+.cajita .precio {
+  display: flow-root;
+  background: #343a40;
+  position: inherit;
+  text-align: center;
+  color: white;
+}
+.imagen {
+  width: 250px;
+  min-height: 120px;
+  float: left;
+  background-size: 100% !important;
+  background-position: center !important;
+}
+
 .jumbotron, .card-body, .container, .site-header{
     font-family: 'Raleway', serif !important;
 }
@@ -139,3 +177,4 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
