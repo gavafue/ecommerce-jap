@@ -79,6 +79,13 @@ body {
     outline: none;
     cursor: pointer;
 }
+.login-block p {
+    font-size: 10px;
+}
+.login-block input#checkbox {
+    height: 15px;
+    width:15px;
+}
 
 .login-block button:hover {
     background: #79d8e9 ;
