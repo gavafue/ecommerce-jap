@@ -30,6 +30,13 @@
   text-align: center;
   color: white;
 }
+.vendidos {
+  background: #343a40;
+  color: white;
+  width: 50px;
+  font-size: 11px;
+  text-align: center;
+}
 .imagen {
   width: 250px;
   min-height: 120px;
