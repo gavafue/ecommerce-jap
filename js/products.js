@@ -8,7 +8,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
             .then(datos => {
                 datos.forEach(element => {
-                    contenedor += `<div class="cajita"><div class="imagen" style="background:url(${element.imgSrc})"><div class="vendidos">${element.soldCount} vendidos</div></div><span>${element.name}</span><p>${element.description}</p><div class="precio">${element.currency} ${element.cost}</div></div>`
+                    contenedor += `<div class="cajita">
+                    <div class="imagen" style="background:url(${element.imgSrc})">
+                    <div class="vendidos">${element.soldCount} vendidos</div></div>
+                    <span>${element.name}</span>
+                    <p>${element.description}</p>
+                    <div class="precio">${element.currency} ${element.cost}</div></div>`
                 });
                 document.getElementById("listadoproductos").innerHTML = contenedor;
 
