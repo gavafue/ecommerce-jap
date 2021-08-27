@@ -47,3 +47,41 @@ function redireccionar(url){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 });
+
+function guardarDatos() {
+
+  //Creo un objeto que contega los datos a guardar:
+  localStorage.clear()
+  let mis_datos = {
+      nombre: document.getElementById("username").value  };
+
+  //Como necesito tener un string, en lugar de un objeto para guardarlo en localStorage, lo transformaré a JSON
+  //Lo hago utilizando el método stringify() del objeto JSON, que recibe un objeto y lo devuelve como JSON:
+  let mis_datos_json = JSON.stringify(mis_datos);
+
+  //Por último, utilizo el método setItem() del objeto localStorage para almacenar el JSON a nivel local
+  //Recibe 2 parametros: el primero será un string con el nombre que le pondremos al objeto (key)
+  //y el segundo será el contenido. En este caso, en formato json.
+  localStorage.setItem("mis_datos", mis_datos_json);
+}
+
+function recuperarDatos() {
+
+  //Primero verifico si hay algo guardado con ese nombre
+  if (localStorage.getItem("mis_datos")) {
+
+      //.getItem() recibe por parametro el nombre (key) de un ítem y devuelve su contenido:
+      mis_datos_json = localStorage.getItem("mis_datos");
+
+      //Como lo que me devuelve es el json que guardé, lo transformo a objeto con .parse():
+      mis_datos = JSON.parse(mis_datos_json);
+
+      //Ya tengo el objeto, y lo muestro en pantalla con DOM:
+      document.getElementById("saludobienvenida").innerHTML = "Bienvenido/a: " + mis_datos.nombre;
+
+  }else{
+      document.getElementById("datos").innerHTML = "No hay datos almacenados";
+  }
+
+}
+recuperarDatos()
