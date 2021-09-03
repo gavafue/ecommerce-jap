@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     } else {
                         precioMinimo = undefined;
                     }
+                    
                     document.getElementById("listadoproductos").innerHTML = "";
                     let resultado = ""
                     for (let element of datos) {
@@ -108,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                         <span>${element.name}</span>
                         <p>${element.description}</p>
                         <div class="precio">${element.currency} ${element.cost}</div></div>`;}
-                        
+
                     document.getElementById("listadoproductos").innerHTML= resultado;
                     }
 

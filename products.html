@@ -31,59 +31,60 @@
       <h2>Productos</h2>
       <p class="lead">Verás aquí todos los productos del sitio.</p>
     </div>
-    <div class="row container p-0 m-0">
-      <div class="col">
-        <p class="font-weight-normal text-right my-2">Filtrar precio.</p>
-      </div>
-      <div class="col">
-        <input class="form-control" type="number" placeholder="min." id="priceMin">
-      </div>
-      <div class="col">
-        <input class="form-control" type="number" placeholder="máx." id="priceMax">
-      </div>
-      <div class="col">
-        <button id="filtrarprecio">Filtrar</button>
-      </div>
-      <div class="row">
-        <div class="col text-right">
-          <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+ 
+  <div class="row container p-0 m-0">
+    <div class="col">
+      <p class="font-weight-normal text-right my-2">Filtrar precio.</p>
+    </div>
+    <div class="col">
+      <input class="form-control" type="number" placeholder="min." id="priceMin">
+    </div>
+    <div class="col">
+      <input class="form-control" type="number" placeholder="máx." id="priceMax">
+    </div>
+    <div class="col">
+      <button id="filtrarprecio">Filtrar</button>
+    </div>
+    <div class="row">
+      <div class="col text-right">
+        <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
 
-            <label class="btn btn-light" id="ordAsc">
-              <input type="radio" name="options" autocomplete="off" checked="">Precio ascendente
-            </label>
-            <label class="btn btn-light" id="ordDesc">
-              <input type="radio" name="options" autocomplete="off">Precio descendiente
-            </label>
-            <label class="btn btn-light" id="ordRel">
-              <input type="radio" name="options" autocomplete="off"><i
-                class="fas fa-sort-amount-down mr-1"></i>Relevancia.
-            </label>
-          </div>
+          <label class="btn btn-light" id="ordAsc">
+            <input type="radio" name="options" autocomplete="off" checked="">Precio ascendente
+          </label>
+          <label class="btn btn-light" id="ordDesc">
+            <input type="radio" name="options" autocomplete="off">Precio descendiente
+          </label>
+          <label class="btn btn-light" id="ordRel">
+            <input type="radio" name="options" autocomplete="off"><i
+              class="fas fa-sort-amount-down mr-1"></i>Relevancia.
+          </label>
         </div>
       </div>
-      <div id="listadoproductos"></div>
     </div>
-    <footer class="text-muted bg-light">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-        <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-      </div>
-    </footer>
-    <div id="spinner-wrapper">
-      <div class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+    <div id="listadoproductos"></div>
+  </div>
+  <footer class="text-muted bg-light">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/products.js"></script>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/products.js"></script>
 </body>
 
 </html>
