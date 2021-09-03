@@ -2,7 +2,9 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 var contenedor = "";
-var products = fetch(PRODUCTS_URL).then(respuesta => respuesta.json()).then(datos => datos);
+let precioMaximo = undefined;
+let precioMinimo = undefined;
+
 
 document.addEventListener("DOMContentLoaded", function (e) {
         fetch(PRODUCTS_URL)
@@ -61,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
                 })
 
-                
+
                 /*cuando se hace click en el boton de relevancia*/
                 document.getElementById("ordRel").addEventListener("click", function () {
                     document.getElementById("listadoproductos").innerHTML = "";
@@ -81,7 +83,38 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     document.getElementById("listadoproductos").innerHTML = resultado;
 
                 })
+                document.getElementById("filtrarprecio").addEventListener("click", function () {
+                    precioMinimo = document.getElementById("priceMin").value;
+                    precioMaximo = document.getElementById("priceMax").value;
 
+                    if (precioMaximo != undefined && precioMaximo != "" && (parseInt(precioMaximo)) > 0) {
+                        precioMaximo = parseInt(precioMaximo) ;
+                    } else {
+                        precioMaximo = undefined;
+                    }
+
+                    if (precioMinimo != undefined && precioMinimo != "" && (parseInt(precioMinimo)) > 0) {
+                         precioMinimo = parseInt(precioMinimo);
+                    } else {
+                        precioMinimo = undefined;
+                    }
+                    document.getElementById("listadoproductos").innerHTML = "";
+                    let resultado = ""
+                    for (let element of datos) {
+                        if (element.cost >= precioMinimo && element.cost <= precioMaximo){
+                        resultado += `<div class="cajita">
+                        <div class="imagen" style="background:url(${element.imgSrc})">
+                        <div class="vendidos">${element.soldCount} vendidos</div></div>
+                        <span>${element.name}</span>
+                        <p>${element.description}</p>
+                        <div class="precio">${element.currency} ${element.cost}</div></div>`;}
+                        
+                    document.getElementById("listadoproductos").innerHTML= resultado;
+                    }
+
+
+
+                });
             })
             .catch(error => alert("Hubo un error: " + error));
     }
