@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     } else {
                         precioMinimo = undefined;
                     }
-                    
+
                     document.getElementById("listadoproductos").innerHTML = "";
                     let resultado = ""
                     for (let element of datos) {
@@ -116,6 +116,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 
                 });
+                document.getElementById("reset").addEventListener("click",function(){
+                    precioMinimo = undefined;
+                    precioMaximo = undefined;
+
+                    document.getElementById("listadoproductos").innerHTML = contenedor;
+                })
             })
             .catch(error => alert("Hubo un error: " + error));
     }
