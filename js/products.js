@@ -2,6 +2,7 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 var contenedor = "";
+var products
 document.addEventListener("DOMContentLoaded", function (e) {
         fetch(PRODUCTS_URL)
             .then(respuesta => respuesta.json())
@@ -16,9 +17,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     <div class="precio">${element.currency} ${element.cost}</div></div>`
                 });
                 document.getElementById("listadoproductos").innerHTML = contenedor;
+                products = datos;
 
             })
             .catch(error => alert("Hubo un error: " + error));
     }
 
 );
+
+document.getElementById("ordAsc").addEventListener("click", function(){
+
+})
