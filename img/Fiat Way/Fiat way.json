@@ -1,0 +1,17 @@
+{
+    "name": "Fiat Way",
+    "description": "Es un vehículo osado y singular en sus conceptos y sus líneas. Desde su llegada sorprendió por su diseño y funcionalidades. A su vez, sus molduras en las puertas y sus fenders le aportan robustez a su diseño sin quitarle elegancia. Mientras tanto, sus rieles portaequipaje en el techo le otorgan un look más agresivo con personalidad off road. Evo Way está listo para recorrer cualquier camino.",
+    "cost": 14500,
+    "currency": "USD",
+    "imgSrc": "img/prod2.jpg",
+    "soldCount": "14,",
+    "category": "Autos",
+    "images": [
+      "img/Fiat Way/1.jfif",
+      "img/prod1_1.jpg",
+      "img/prod1_2.jpg",
+      "img/prod1_3.jpg",
+      "img/prod1_4.jpg"
+    ],
+    "relatedProducts": "[1, 3]"
+  }

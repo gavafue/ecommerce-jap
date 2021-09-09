@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     <div class="imagen" style="background:url(${element.imgSrc})">
                     <div class="vendidos">${element.soldCount} vendidos</div></div>
                     <span>${element.name}</span>
-                    <p>${element.description}</p>
+                    <p>${element.description}<button class="btn btn-light btn-block">Más info</button></p>
                     <div class="precio">${element.currency} ${element.cost}</div></div>`
                 });
                 document.getElementById("listadoproductos").innerHTML = contenedor;
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     <div class="imagen" style="background:url(${element.imgSrc})">
                     <div class="vendidos">${element.soldCount} vendidos</div></div>
                     <span>${element.name}</span>
-                    <p>${element.description}</p>
+                    <p>${element.description}<button class="btn btn-light btn-block">Más info</button></p>
                     <div class="precio">${element.currency} ${element.cost}</div></div>`;
                         }
 
