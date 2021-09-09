@@ -1,7 +1,7 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-var contenedor = "";
+
 
 
 
@@ -10,16 +10,19 @@ document.addEventListener("DOMContentLoaded", function (e) {
             .then(respuesta => respuesta.json())
 
             .then(datos => {
-                datos.forEach(element => {
-                    contenedor += `<div class="cajita">
-                    <div class="imagen" style="background:url(${element.imgSrc})">
-                    <div class="vendidos">${element.soldCount} vendidos</div></div>
-                    <span>${element.name}</span>
-                    <p>${element.description}<button class="btn btn-light btn-block">Más info</button></p>
-                    <div class="precio">${element.currency} ${element.cost}</div></div>`
-                });
-                document.getElementById("listadoproductos").innerHTML = contenedor;
-
+                function mostrarProductos(array) {
+                    var contenedor = "";
+                    array.forEach(element => {
+                        contenedor += `<div class="cajita">
+                        <div class="imagen" style="background:url(${element.imgSrc})">
+                        <div class="vendidos">${element.soldCount} vendidos</div></div>
+                        <span>${element.name}</span>
+                        <p>${element.description}<button class="btn btn-light btn-block" id="botoncito">Más info</button></p>
+                        <div class="precio">${element.currency} ${element.cost}</div></div>`
+                    });
+                    document.getElementById("listadoproductos").innerHTML = contenedor;
+                }
+                mostrarProductos(datos)
 
                 /*Cuando se hace click en el boton de orden ascendente */
                 document.getElementById("ordAsc").addEventListener("click", function () {
@@ -28,16 +31,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     result = datos.sort(function (a, b) {
                         return a.cost - b.cost;
                     });
-                    let resultado = ""
-                    for (let element of result) {
-                        resultado += `<div class="cajita">
-                    <div class="imagen" style="background:url(${element.imgSrc})">
-                    <div class="vendidos">${element.soldCount} vendidos</div></div>
-                    <span>${element.name}</span>
-                    <p>${element.description}</p>
-                    <div class="precio">${element.currency} ${element.cost}</div></div>`;
-                    }
-                    document.getElementById("listadoproductos").innerHTML = resultado;
+                    mostrarProductos(result)
 
                 })
 
@@ -49,16 +43,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     result = datos.sort(function (a, b) {
                         return b.cost - a.cost;
                     });
-                    let resultado = ""
-                    for (let element of result) {
-                        resultado += `<div class="cajita">
-                    <div class="imagen" style="background:url(${element.imgSrc})">
-                    <div class="vendidos">${element.soldCount} vendidos</div></div>
-                    <span>${element.name}</span>
-                    <p>${element.description}</p>
-                    <div class="precio">${element.currency} ${element.cost}</div></div>`;
-                    }
-                    document.getElementById("listadoproductos").innerHTML = resultado;
+                    mostrarProductos(result)
 
                 })
 
@@ -70,61 +55,46 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     result = datos.sort(function (a, b) {
                         return b.soldCount - a.soldCount; /*hago resta entre vendidos para generar el valor*/
                     });
-                    let resultado = ""
-                    for (let element of result) {
-                        resultado += `<div class="cajita">
-                    <div class="imagen" style="background:url(${element.imgSrc})">
-                    <div class="vendidos">${element.soldCount} vendidos</div></div>
-                    <span>${element.name}</span>
-                    <p>${element.description}</p>
-                    <div class="precio">${element.currency} ${element.cost}</div></div>`;
-                    }
-                    document.getElementById("listadoproductos").innerHTML = resultado;
+                    mostrarProductos(result)
 
                 })
 
                 /*filtro de precio*/
                 let precioMaximo = undefined;
                 let precioMinimo = undefined;
-                document.getElementById("filtrarprecio").addEventListener("click", function(){
+                document.getElementById("filtrarprecio").addEventListener("click", function () {
                     //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
                     //de productos por categoría.
                     precioMinimo = document.getElementById("priceMin").value;
                     precioMaximo = document.getElementById("priceMax").value;
-            
-                    if ((precioMinimo != undefined) && (precioMinimo != "") && (parseInt(precioMinimo)) >= 0){
+
+                    if ((precioMinimo != undefined) && (precioMinimo != "") && (parseInt(precioMinimo)) >= 0) {
                         precioMinimo = parseInt(precioMinimo);
-                    }
-                    else{
+                    } else {
                         precioMinimo = undefined;
                     }
-            
-                    if ((precioMaximo != undefined) && (precioMaximo != "") && (parseInt(precioMaximo)) >= 0){
+
+                    if ((precioMaximo != undefined) && (precioMaximo != "") && (parseInt(precioMaximo)) >= 0) {
                         precioMaximo = parseInt(precioMaximo);
-                    }
-                    else{
+                    } else {
                         precioMaximo = undefined;
                     }
 
                     document.getElementById("listadoproductos").innerHTML = "";
-                    let resultado = ""
+                    let resultado = []
                     for (let element of datos) {
                         if (((precioMinimo == undefined) || (precioMinimo != undefined && parseInt(element.cost) >= precioMinimo)) &&
-            ((precioMaximo == undefined) || (precioMaximo != undefined && parseInt(element.cost) <= precioMaximo))){
-                            resultado += `<div class="cajita">
-                    <div class="imagen" style="background:url(${element.imgSrc})">
-                    <div class="vendidos">${element.soldCount} vendidos</div></div>
-                    <span>${element.name}</span>
-                    <p>${element.description}<button class="btn btn-light btn-block">Más info</button></p>
-                    <div class="precio">${element.currency} ${element.cost}</div></div>`;
+                            ((precioMaximo == undefined) || (precioMaximo != undefined && parseInt(element.cost) <= precioMaximo))) {
+                           resultado.push(element);;
                         }
-
-                        document.getElementById("listadoproductos").innerHTML = resultado;
+                        mostrarProductos(resultado);
                     }
-
-
-
                 });
+
+                /*al hacer click en productos, redirige*/
+                document.getElementById("botoncito").addEventListener("click", function () {
+                    window.location = "product-info.html";
+                })
             })
             .catch(error => alert("Hubo un error: " + error));
     }
