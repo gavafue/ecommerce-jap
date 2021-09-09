@@ -2,8 +2,7 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 var contenedor = "";
-let precioMaximo = undefined;
-let precioMinimo = undefined;
+
 
 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -83,45 +82,49 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     document.getElementById("listadoproductos").innerHTML = resultado;
 
                 })
-                document.getElementById("filtrarprecio").addEventListener("click", function () {
+
+                /*filtro de precio*/
+                let precioMaximo = undefined;
+                let precioMinimo = undefined;
+                document.getElementById("filtrarprecio").addEventListener("click", function(){
+                    //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
+                    //de productos por categoría.
                     precioMinimo = document.getElementById("priceMin").value;
                     precioMaximo = document.getElementById("priceMax").value;
-
-                    if (precioMaximo != undefined && precioMaximo != "" && (parseInt(precioMaximo)) > 0) {
-                        precioMaximo = parseInt(precioMaximo) ;
-                    } else {
-                        precioMaximo = undefined;
+            
+                    if ((precioMinimo != undefined) && (precioMinimo != "") && (parseInt(precioMinimo)) >= 0){
+                        precioMinimo = parseInt(precioMinimo);
                     }
-
-                    if (precioMinimo != undefined && precioMinimo != "" && (parseInt(precioMinimo)) > 0) {
-                         precioMinimo = parseInt(precioMinimo);
-                    } else {
+                    else{
                         precioMinimo = undefined;
+                    }
+            
+                    if ((precioMaximo != undefined) && (precioMaximo != "") && (parseInt(precioMaximo)) >= 0){
+                        precioMaximo = parseInt(precioMaximo);
+                    }
+                    else{
+                        precioMaximo = undefined;
                     }
 
                     document.getElementById("listadoproductos").innerHTML = "";
                     let resultado = ""
                     for (let element of datos) {
-                        if (element.cost >= precioMinimo && element.cost <= precioMaximo){
-                        resultado += `<div class="cajita">
-                        <div class="imagen" style="background:url(${element.imgSrc})">
-                        <div class="vendidos">${element.soldCount} vendidos</div></div>
-                        <span>${element.name}</span>
-                        <p>${element.description}</p>
-                        <div class="precio">${element.currency} ${element.cost}</div></div>`;}
+                        if (((precioMinimo == undefined) || (precioMinimo != undefined && parseInt(element.cost) >= precioMinimo)) &&
+            ((precioMaximo == undefined) || (precioMaximo != undefined && parseInt(element.cost) <= precioMaximo))){
+                            resultado += `<div class="cajita">
+                    <div class="imagen" style="background:url(${element.imgSrc})">
+                    <div class="vendidos">${element.soldCount} vendidos</div></div>
+                    <span>${element.name}</span>
+                    <p>${element.description}</p>
+                    <div class="precio">${element.currency} ${element.cost}</div></div>`;
+                        }
 
-                    document.getElementById("listadoproductos").innerHTML= resultado;
+                        document.getElementById("listadoproductos").innerHTML = resultado;
                     }
 
 
 
                 });
-                document.getElementById("reset").addEventListener("click",function(){
-                    precioMinimo = undefined;
-                    precioMaximo = undefined;
-
-                    document.getElementById("listadoproductos").innerHTML = contenedor;
-                })
             })
             .catch(error => alert("Hubo un error: " + error));
     }
