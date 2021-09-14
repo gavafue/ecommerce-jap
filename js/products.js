@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                         <div class="imagen" style="background:url(${element.imgSrc})">
                         <div class="vendidos">${element.soldCount} vendidos</div></div>
                         <span>${element.name}</span>
-                        <p>${element.description}<button class="btn btn-light btn-block" id="botoncito">Más info</button></p>
+                        <p>${element.description}<button class="btn btn-light btn-block" onclick="completeinfo()">Más info</button></p>
                         <div class="precio">${element.currency} ${element.cost}</div></div>`
                     });
                     document.getElementById("listadoproductos").innerHTML = contenedor;
@@ -90,13 +90,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
                         mostrarProductos(resultado);
                     }
                 });
-
-                /*al hacer click en productos, redirige*/
-                document.getElementById("botoncito").addEventListener("click", function () {
-                    window.location = "product-info.html";
-                })
+           
             })
             .catch(error => alert("Hubo un error: " + error));
     }
 
 );
+
+
+ /*al hacer click en productos, redirige*/
+ function completeinfo(){
+    window.location = "product-info.html";
+ }

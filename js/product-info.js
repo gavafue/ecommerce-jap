@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoaded", function(e){
     .then(datos => {
         document.getElementById("productInfoContainer").innerHTML= `<div class="text-center p-4">
         <h2>${datos.name}</h2></div>
-        <p>${datos.description}</p>
-        <p>${datos.currency} ${datos.cost}</p>
-        <img src="${datos.images[0]}" width="220px"></img>
+        <p style="text-align:justify;">${datos.description}</p>
+        <p style="text-align:center;font-weight:bold;">${datos.currency} ${datos.cost}</p>
+        <div style="margin:0 auto;width:90%;"><img src="${datos.images[0]}" width="220px"></img>
         <img src="${datos.images[1]}" width="220px"></img>
         <img src="${datos.images[2]}" width="220px"></img>
-        <img src="${datos.images[3]}" width="220px"></img>
-       `;
+        <img src="${datos.images[3]}" width="220px"></img></div>
+       <hr>`;
         
     });
 });
