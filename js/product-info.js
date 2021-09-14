@@ -49,8 +49,7 @@ array.forEach(element => {
     }
     contenedor += `<div class="comment"><b>${element.user}</b> ${element.description}
   <div class="stars"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-${stars}
- <p>${element.dateTime}</p></div></div><hr>`
+${stars} <p>${element.dateTime}</p></div></div><hr>`
                     });
                     document.getElementById("commentslist").innerHTML = contenedor;
                 }
