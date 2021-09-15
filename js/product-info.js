@@ -1,6 +1,61 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+function comentar(){
+    var comment_text = document.getElementById("comment_text").value;
+    var puntuacion = document.getElementById("puntuacion").value;
+    var stars=""
+     if(puntuacion==0){
+         stars= `<span class="fa fa-star "></span>
+         <span class="fa fa-star "></span>
+         <span class="fa fa-star "></span>
+         <span class="fa fa-star"></span>
+         <span class="fa fa-star"></span>`
+     }
+     if(puntuacion==1){
+         stars=`<span class="fa fa-star checked"></span>
+         <span class="fa fa-star "></span>
+         <span class="fa fa-star "></span>
+         <span class="fa fa-star"></span>
+         <span class="fa fa-star"></span>`
+     }
+     if(puntuacion==2){
+         stars=`<span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star "></span>
+         <span class="fa fa-star"></span>
+         <span class="fa fa-star"></span>`
+     }
+     if(puntuacion==3){
+         stars=`<span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star"></span>
+         <span class="fa fa-star"></span>`
+     }
+     if(puntuacion==4){
+         stars=`<span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star"></span>`
+     }
+     if(puntuacion==5){
+         stars=`<span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>`
+     }
+ var probando= comment_text;
+ var mis_datos_json = localStorage.getItem("mis_datos")
+var nickname = JSON.parse(mis_datos_json)
+    document.getElementById("commentslist").innerHTML+=
+    `<b>${nickname.nombre}</b> ${probando} <br>
+    ${stars}<br>
+    2020-02-21 15:05:22<hr>`
+ }
+ 
 function showComments(array){
 var contenedor = "";
 array.forEach(element => {
@@ -77,4 +132,5 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (result) {
        showComments(result.data);
     });
+
 });

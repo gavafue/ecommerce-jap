@@ -30,6 +30,21 @@
     <div id="productInfoContainer"></div>
     <h2>Comentarios</h2>
     <div id="commentslist"></div>
+    <div id="comentar">
+      <div class="input-group">
+        <span class="input-group-text"><select class="form-select" id ="puntuacion" aria-label="Default select example">
+          <option selected>Puntúa esta publicación</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select></span>
+        <textarea class="form-control" id="comment_text" aria-label="With textarea"></textarea>
+        <button class="btn btn-primary" onclick="comentar()">Comentar</button>
+      </div>
+    </div>
   </div>
   <footer class="text-muted">
     <div class="container">
