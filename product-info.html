@@ -22,33 +22,46 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a class="py-2 d-none d-md-inline-block" href="#" id="saludobienvenida"></a>
+      <div class="dropdown">
+        <button class="btn btn-dark bg-dark dropdown-toggle" type="button" id="saludobienvenida" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"></button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="cart.html">Mi carrito</a>
+          <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="index.html">Cerrar Sesión</a>
+
+        </div>
+      </div>
     </div>
   </nav>
   <div class="container p-5">
-    <div id="productInfoContainer"></div>
-    
+    <div class="container"><div id="productInfoContainer"></div></div>
+
     <h2>Comentarios</h2>
     <div id="commentslist"></div>
     <div id="comentar">
       <div class="input-group">
-        <span class="input-group-text"><select class="form-select" id ="puntuacion" aria-label="Default select example">
-          <option selected>Puntúa esta publicación</option>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select></span>
+        <span class="input-group-text"><select class="form-select" id="puntuacion" aria-label="Default select example">
+            <option selected>Puntúa esta publicación</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select></span>
         <textarea class="form-control" id="comment_text" aria-label="With textarea"></textarea>
         <button class="btn btn-primary" onclick="comentar()">Comentar</button>
       </div>
     </div>
     <hr>
     <h2>Productos Relacionados</h2>
-    <div><div class="content"><div class="card-group" id="productosRelacionados"></div></div></div>
+    <div>
+      <div class="content">
+        <div class="card-group" id="productosRelacionados"></div>
+      </div>
+    </div>
   </div>
   <footer class="text-muted">
     <div class="container">
@@ -70,7 +83,7 @@
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
-   <script src="js/product-info.js"></script>
+  <script src="js/product-info.js"></script>
 </body>
 
 </html>
