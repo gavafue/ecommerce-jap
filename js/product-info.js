@@ -2,10 +2,10 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 
-
+var arrayproductos
 
 // Funcion para añadir un nuevo comentario.
-var arrayproductos
+
 
 function comentar() {
     var comment_text = document.getElementById("comment_text").value;
@@ -61,7 +61,7 @@ function comentar() {
     ${stars}<br>
     2020-02-21 15:05:22<hr>`
 }
-
+//Funcion que recibe array de donde mostrar comentarios
 function showComments(array) {
     var contenedor = "";
     array.forEach(element => {
@@ -119,14 +119,18 @@ ${stars} <p>${element.dateTime}</p></div></div><hr>`
 
 
 document.addEventListener("DOMContentLoaded", function (e) {
-   
+   //LLamado a Json de array de productos para poder usar datos en los relacionados
     getJSONData(PRODUCTS_URL).then(function (result) {
 arrayproductos = result.data;
     })
+
+    //Llamado a la información específica de un producto
     fetch(PRODUCT_INFO_URL)
         .then(respuesta => respuesta.json())
 
         .then(datos => {
+
+            // Muestra datos en #productInfoContainer
             document.getElementById("productInfoContainer").innerHTML = `<div class="text-center p-4">
         <h2>${datos.name}</h2></div>
         <p style="text-align:justify;">${datos.description}</p>
@@ -161,7 +165,8 @@ arrayproductos = result.data;
       </div></div>
        <hr>`;
 
-
+// Recorro el arreglo "relatedProduct" del arreglo "datos" y con los valores que me devuelve(indices)
+//busco informacion en el arreglo "arrayproducts"
             datos.relatedProducts.forEach(element => {
                 document.getElementById("productosRelacionados").innerHTML += `
                 <div class="card" style="max-width: 200px !important;">
@@ -176,7 +181,7 @@ arrayproductos = result.data;
 
 
         });
-
+//Llama a Json de Comentarios y aplica función showComments()
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (result) {
         showComments(result.data);
     });
