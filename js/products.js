@@ -14,16 +14,27 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 function mostrarProductos(array) {
                     var contenedor = "";
                     array.forEach(element => {
-                        contenedor += `<div class="cajita">
-                        <div class="imagen" style="background:url(${element.imgSrc})">
-                        <div class="vendidos">${element.soldCount} vendidos</div></div>
-                        <span>${element.name}</span>
-                        <p>${element.description}<button class="btn btn-light btn-block" onclick="completeinfo()">Más info</button></p>
-                        <div class="precio">${element.currency} ${element.cost}</div></div>`
+                        contenedor += `
+                        <a class="list-group-item list-group-item-action" onclick="completeinfo()">
+                        <div class="row">
+                    <div class="col-3">
+                        <img src="` + element.imgSrc + `" alt="` + element.description + `" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">`+ element.name +`</h4>
+                            <small class="text-muted">` + element.soldCount + ` artículos vendidos<br>
+                            <span class="badge badge-dark" style="font-size:20px"> ${element.currency} ${element.cost}</span></small>
+                            
+
+                        </div>
+                        <p class="mb-1">` + element.description + `</p>
+                    </div>
+                </div></a>`
                     });
                     document.getElementById("listadoproductos").innerHTML = contenedor;
                 }
-                mostrarProductos(datos)
+                mostrarProductos(datos);
 
                 /*Cuando se hace click en el boton de orden ascendente */
                 document.getElementById("ordAsc").addEventListener("click", function () {
