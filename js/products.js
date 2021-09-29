@@ -3,13 +3,14 @@
 //elementos HTML presentes.
 
 
-
+var arrayproductos
 
 document.addEventListener("DOMContentLoaded", function (e) {
         fetch(PRODUCTS_URL)
             .then(respuesta => respuesta.json())
 
             .then(datos => {
+                arrayproductos= datos;
                 function mostrarProductos(array) {
                     var contenedor = "";
                     array.forEach(element => {
