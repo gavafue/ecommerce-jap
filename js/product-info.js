@@ -11,7 +11,7 @@ function comentar() {
     var comment_text = document.getElementById("comment_text").value;
     var puntuacion = document.getElementById("puntuacion").value;
     var stars = ""
-    if (puntuacion == 0) {
+    if (puntuacion == 0)  {
         stars = `<span class="fa fa-star "></span>
          <span class="fa fa-star "></span>
          <span class="fa fa-star "></span>
