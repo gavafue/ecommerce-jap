@@ -4,6 +4,19 @@
 var listadocarrito
 let counter = 0;
 
+function compraCorrecta() {
+  let mediopago = document.getElementById("inlineFormCustomSelect");
+  if (mediopago.options[mediopago.selectedIndex].value == 0) {
+    alert("¡Selecciona el medio de pago antes de continuar!");
+
+  } else {
+    let nombre = JSON.parse(mis_datos_json).nombre;
+    document.getElementById("exampleModalCenterTitle").innerHTML = "¡Felicitaciones " + nombre + "!";
+    document.getElementById("contenidoAlertacompra").innerHTML = `¡Haz realizado una combra satisfactoriamente por el valor de <b>${document.getElementById("preciototal").innerHTML} UYU </b> los cuales se han abonado con el medio de pago: <b>${mediopago.options[mediopago.selectedIndex].text}</b>. Recuerda que cuentas con <b>2 días hábiles</b> para poder realizar reclamos de facturación.`;
+  }
+
+}
+
 function calcTotal() {
   let totalUYU = 0;
   let totalUSD = 0;
@@ -11,8 +24,7 @@ function calcTotal() {
   for (let i = 0; i < subs.length; i++) {
     if (listadocarrito[i].currency == "UYU") {
       totalUYU += parseInt(subs[i].innerHTML);
-    }
-    else{
+    } else {
       totalUSD += parseInt(subs[i].innerHTML);
     }
   }

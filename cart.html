@@ -133,24 +133,28 @@
           <div class="col">
 
             <div class="form-row align-items-center mx-auto">
-              <div class="col-auto my-1">
-                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                  <option selected>Seleccionar método de pago</option>
-                  <option value="1">Visa</option>
-                  <option value="2">Master</option>
-                  <option value="3">Transferencia</option>
-                </select>
-              </div>
-              <div class="col-auto my-1">
-                <div class="custom-control custom-checkbox mr-sm-2">
-                  <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                  <label class="custom-control-label" for="customControlAutosizing">Recordar mi preferencia</label>
+              <div class="row">
+                <div class="col-auto my-1">
+                  <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"></label>
+                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <option value="0" selected disabled>Seleccionar método de pago</option>
+                    <option value="1">Tarjeta Visa</option>
+                    <option value="2">Tarjeta Master</option>
+                    <option value="3">Transferencia Bancaria</option>
+                  </select>
+                </div>
+                <div class="col-auto my-1">
+                  <div class="custom-control custom-checkbox mr-sm-2">
+                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                    <label class="custom-control-label" for="customControlAutosizing">Recordar mi preferencia</label>
+                  </div>
                 </div>
               </div>
-              <div class="col-auto my-1">
-                <button class="btn btn-info" onclick="compraCorrecta()" data-toggle="modal"
-                  data-target="#exampleModalCenter">Comprar</button>
+              <div class="row">
+                <div class="col-auto my-1">
+                  <button class="btn btn-info btn-lg btn-block" onclick="compraCorrecta()" data-toggle="modal"
+                    data-target="#exampleModalCenter">Comprar</button>
+                </div>
               </div>
             </div>
 
@@ -173,11 +177,13 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
 </body>
-<!-- Modal --><div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -185,14 +191,20 @@
       <div class="modal-body">
         <div class="alert-success d-inline">
           <h4 class="alert-heading">¡Compra realizada con éxito!</h4>
-          <div class="row"><div class="col-2"><img src="/img/iconcheck.png"></div><div class="col"><p id="contenidoAlertacompra"></p></div></div>
+          <div class="row">
+            <div class="col-2"><img src="/img/iconcheck.png"></div>
+            <div class="col">
+              <p id="contenidoAlertacompra"></p>
+            </div>
+          </div>
           <hr>
           <p class="mb-0">¡Muchas gracias por tu preferencia!</p>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+          onclick="window.location='inicio.html'">Finalizar compra</button>
+      </div>
     </div>
   </div>
 </div>
