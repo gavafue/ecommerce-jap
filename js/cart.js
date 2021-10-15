@@ -4,6 +4,33 @@
 var listadocarrito
 let counter = 0;
 
+function calcTotal() {
+  let totalUYU = 0;
+  let totalUSD = 0;
+  let subs = document.getElementsByClassName("subtotal");
+  for (let i = 0; i < subs.length; i++) {
+    if (listadocarrito[i].currency == "UYU") {
+      totalUYU += parseInt(subs[i].innerHTML);
+    }
+    else{
+      totalUSD += parseInt(subs[i].innerHTML);
+    }
+  }
+  let preciototal = totalUYU + (totalUSD * 40)
+  document.getElementById("totaluyu").innerHTML = totalUYU;
+  document.getElementById("totalusd").innerHTML = totalUSD;
+  document.getElementById("preciototal").innerHTML = preciototal;
+}
+
+function modificarSubtotal(preciounit, i) {
+  let cantidad = parseInt(document.getElementById(`cantidad${i}`).value)
+  let subtotal = preciounit * cantidad;
+  document.getElementById(`subtotal${i}`).innerHTML = subtotal;
+  calcTotal()
+}
+
+
+
 document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(CART_2_CURRENCY).then(function (result) {
     if (result.status === "ok") {
@@ -21,59 +48,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
             <td>${element.unitCost} ${element.currency}</td>
             <td>
             <div class="input-group mb-3 mx-auto" style="width:30% !important;"><input type="Number" id="cantidad${[i]}" onchange="modificarSubtotal(${element.unitCost},${i})" class="mx-auto form-control" placeholder="Cantidad" value="${element.count}" aria-label="Username" aria-describedby="addon-wrapping" min="0";></div></td>
-            <td id="subtotal${[i]}">${sub} ${element.currency}</td>
+            <td><div class="row"><div class="col subtotal" id="subtotal${[i]}">${sub}</div><div class="col">${element.currency}</div></div></td>
           </tr>  `;
+      calcTotal();
     }
-
-
-    document.getElementById("zonapago").innerHTML = `
-       <div class="row"><div class="col"> <div class="table-responsive">
-        <table class="table table-striped table-hover table-borderless table-sm table-dark ">
-            <tbody>
-                <tr>
-                    <td class="col-8">Costo parcial UYU:</td>
-                    <td class="col">Amet</td>
-                </tr>
-                <tr>
-
-                    <td class="col-8">Costo parcial USD:</td>
-                    <td class="col">Elit</td>
-
-                </tr>
-                <tr>
-
-                    <td class="col-8">Total (UYU):</td>
-                    <td class="col">Fugiat</td>
-                </tr>
-                
-            </tbody>
-
-        </table>
-    </div>
-</div>
-<div class="col">
-<form class="row mx-auto">
-    <div class="form-row align-items-center mx-auto">
-      <div class="col-auto my-1">
-        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-          <option selected>Seleccionar método de pago</option>
-          <option value="1">Visa</option>
-          <option value="2">Master</option>
-          <option value="3">Transferencia</option>
-        </select>
-      </div>
-      <div class="col-auto my-1">
-        <div class="custom-control custom-checkbox mr-sm-2">
-          <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-          <label class="custom-control-label" for="customControlAutosizing">Recordar mi preferencia</label>
-        </div>
-      </div>
-      <div class="col-auto my-1">
-        <button type="submit" class="btn btn-info">Comprar</button>
-      </div>
-    </div>
-  </form></div></div>`;
   });
 
 });
