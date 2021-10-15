@@ -6,10 +6,12 @@ let counter = 0;
 
 function formpago(){
   let mediopago = document.getElementById("inlineFormCustomSelect");
-  if(mediopago.options[mediopago.selectedIndex].value == (1 || 2)){
+  if(mediopago.options[mediopago.selectedIndex].value == 1 || mediopago.options[mediopago.selectedIndex].value == 2){
+    document.getElementById("formcuentabancaria").classList.add('d-none');
     document.getElementById("formtarjeta").classList.remove('d-none');
   }
   if(mediopago.options[mediopago.selectedIndex].value == (3)){
+    document.getElementById("formtarjeta").classList.add('d-none');
     document.getElementById("formcuentabancaria").classList.remove('d-none');
   }
 }
