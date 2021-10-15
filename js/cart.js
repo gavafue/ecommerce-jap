@@ -4,6 +4,16 @@
 var listadocarrito
 let counter = 0;
 
+function formpago(){
+  let mediopago = document.getElementById("inlineFormCustomSelect");
+  if(mediopago.options[mediopago.selectedIndex].value == (1 || 2)){
+    document.getElementById("formtarjeta").classList.remove('d-none');
+  }
+  if(mediopago.options[mediopago.selectedIndex].value == (3)){
+    document.getElementById("formcuentabancaria").classList.remove('d-none');
+  }
+}
+
 function compraCorrecta() {
   let mediopago = document.getElementById("inlineFormCustomSelect");
   if (mediopago.options[mediopago.selectedIndex].value == 0) {
@@ -12,7 +22,7 @@ function compraCorrecta() {
   } else {
     let nombre = JSON.parse(mis_datos_json).nombre;
     document.getElementById("exampleModalCenterTitle").innerHTML = "¡Felicitaciones " + nombre + "!";
-    document.getElementById("contenidoAlertacompra").innerHTML = `¡Haz realizado una combra satisfactoriamente por el valor de <b>${document.getElementById("preciototal").innerHTML} UYU </b> los cuales se han abonado con el medio de pago: <b>${mediopago.options[mediopago.selectedIndex].text}</b>. Recuerda que cuentas con <b>2 días hábiles</b> para poder realizar reclamos de facturación.`;
+    document.getElementById("contenidoAlertacompra").innerHTML = `¡Haz realizado una compra satisfactoriamente por el valor de <b>${document.getElementById("preciototal").innerHTML} UYU </b> los cuales se han abonado con el medio de pago: <b>${mediopago.options[mediopago.selectedIndex].text}</b>. Recuerda que cuentas con <b>2 días hábiles</b> para poder realizar reclamos de facturación.`;
   }
 
 }
