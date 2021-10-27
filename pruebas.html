@@ -1,20 +1,17 @@
-<a class="list-group-item list-group-item-action" onclick="completeinfo()">
-
-  <div class="col-sm-6 col-md-3">
-    <div class="card " style="width: 18rem;">
-      <div class="card-header">
-        ${element.name}
-      </div>
-      <img src="${element.imgSrc}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p class="card-text">${element.description}</p>
-        <small class="text-muted">` + element.soldCount + ` artículos vendidos<br>
-          <span class="badge badge-dark" style="font-size:20px"> ${element.currency} ${element.cost}</span></small>
-          
-      </div>
+<div class="col-sm-6 col-md-3" onclick="completeinfo()">
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      ${element.name}
     </div>
-  </div>`
+    <img src="${element.imgSrc}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">${element.description}</p>
+      <small class="text-muted">` + element.soldCount + ` artículos vendidos<br>
+        <span class="badge badge-dark" style="font-size:20px"> ${element.currency} ${element.cost}</span></small>
 
+    </div>
+  </div>
+</div>
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/dropzone.js"></script>
