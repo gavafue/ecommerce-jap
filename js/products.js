@@ -15,22 +15,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     var contenedor = "";
                     array.forEach(element => {
                         contenedor += `
-                        <a class="list-group-item list-group-item-action" onclick="completeinfo()">
-                        <div class="row">
-                    <div class="col-3">
-                        <img src="` + element.imgSrc + `" alt="` + element.description + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ element.name +`</h4>
-                            <small class="text-muted">` + element.soldCount + ` artículos vendidos<br>
-                            <span class="badge badge-dark" style="font-size:20px"> ${element.currency} ${element.cost}</span></small>
-                            
-
-                        </div>
-                        <p class="mb-1">` + element.description + `</p>
-                    </div>
-                </div></a>`
+                        <div class="col-md-6 col-lg-4 col-xs-12 mt-3" onclick="completeinfo()" ">
+  <div class="card" style="min-width: 18rem; height:410px;">
+    <div class="card-header text-center">
+      ${element.name}
+    </div>
+    <img src="${element.imgSrc}" class="card-img-top" alt="Imagen del auto ${element.name}">
+    <div class="card-body">
+      <p class="card-text">${element.description}</p>
+      
+       <div style="display:flex;flex-direction: column;align-content: center;flex-wrap: wrap;"> <div class="justify-content-center badge badge-dark" style="font-size:20px;"> ${element.currency} ${element.cost}</div>
+        <div class="text-muted" style="font-size:15px">` + element.soldCount + ` artículos vendidos</div></div>
+    </div>
+  </div>
+</div>`
                     });
                     document.getElementById("listadoproductos").innerHTML = contenedor;
                 }

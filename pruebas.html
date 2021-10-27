@@ -1,27 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<a class="list-group-item list-group-item-action" onclick="completeinfo()">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <title>Document</title>
-</head>
-
-
-<body>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-
-</body>
-
-
-</html>
+  <div class="col-sm-6 col-md-3">
+    <div class="card " style="width: 18rem;">
+      <div class="card-header">
+        ${element.name}
+      </div>
+      <img src="${element.imgSrc}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text">${element.description}</p>
+        <small class="text-muted">` + element.soldCount + ` artículos vendidos<br>
+          <span class="badge badge-dark" style="font-size:20px"> ${element.currency} ${element.cost}</span></small>
+          
+      </div>
+    </div>
+  </div>`
 
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
