@@ -3,12 +3,20 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
     //Autorellando campos perfil
- document.getElementById("emailProfile").value = datos_usuario.email;
- document.getElementById("nameProfile").value = datos_usuario.nombre;
- document.getElementById("surnameProfile").value = datos_usuario.apellido;
- document.getElementById("contactProfile").value = datos_usuario.telefono;
- document.getElementById("ageProfile").value = datos_usuario.edad;
- document.getElementById("avatarseleccionado").innerHTML = `<img src="${datos_usuario.avatar}" width=90>`;
+    document.getElementById("emailProfile").value = datos_usuario.email;
+    if (datos_usuario.nombre) {
+        document.getElementById("nameProfile").value = datos_usuario.nombre;
+    }
+    if (datos_usuario.apellido) {
+        document.getElementById("surnameProfile").value = datos_usuario.apellido;
+    }
+    if (datos_usuario.telefono) {
+        document.getElementById("contactProfile").value = datos_usuario.telefono;
+    }
+    if (datos_usuario.edad) {
+        document.getElementById("ageProfile").value = datos_usuario.edad;
+    }
+    document.getElementById("avatarseleccionado").innerHTML = `<img src="${datos_usuario.avatar}" width=90>`;
 });
 
 
@@ -33,16 +41,15 @@ function probando() {
             }
         }
     }
-    
-    let datos_usuario_2 = {
-        nombre: document.getElementById("nameProfile").value,
-        email: document.getElementById("emailProfile").value,
-        apellido: document.getElementById("surnameProfile").value,
-        telefono: document.getElementById("contactProfile").value,
-        edad: document.getElementById("ageProfile").value,
-        avatar: avatarimg
-    };
 
-    localStorage.setItem("datos_usuario", JSON.stringify(datos_usuario_2));
+
+    datos_usuario.nombre = document.getElementById("nameProfile").value;
+    datos_usuario.email = document.getElementById("emailProfile").value;
+    datos_usuario.apellido = document.getElementById("surnameProfile").value;
+    datos_usuario.telefono = document.getElementById("contactProfile").value;
+    datos_usuario.edad = document.getElementById("ageProfile").value;
+    if(avatarimg !=null & avatarimg !=""){ datos_usuario.avatar = avatarimg;}
+
+    localStorage.setItem("datos_usuario", JSON.stringify(datos_usuario));
 
 }

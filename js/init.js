@@ -60,11 +60,7 @@ function guardarDatos() {
   //Creo un objeto que contega los datos a guardar:
 
   let datos_usuario = {
-    nombre: "",
-    apellido: "",
-    telefono: "",
     email: document.getElementById("email-login").value,
-    edad: "",
     avatar: "https://via.placeholder.com/90x95/09f/fff.png"
   };
 
