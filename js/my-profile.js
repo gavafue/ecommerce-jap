@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
  document.getElementById("nameProfile").value = datos_usuario.nombre;
  document.getElementById("surnameProfile").value = datos_usuario.apellido;
  document.getElementById("contactProfile").value = datos_usuario.telefono;
+ document.getElementById("ageProfile").value = datos_usuario.edad;
  document.getElementById("avatarseleccionado").innerHTML = `<img src="${datos_usuario.avatar}" width=90>`;
 });
 
@@ -38,6 +39,7 @@ function probando() {
         email: document.getElementById("emailProfile").value,
         apellido: document.getElementById("surnameProfile").value,
         telefono: document.getElementById("contactProfile").value,
+        edad: document.getElementById("ageProfile").value,
         avatar: avatarimg
     };
 
