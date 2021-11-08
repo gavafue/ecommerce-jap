@@ -4,30 +4,77 @@
 var listadocarrito
 let counter = 0;
 
-function formpago(){
-  let mediopago = document.getElementById("inlineFormCustomSelect");
-  if(mediopago.options[mediopago.selectedIndex].value == 1 || mediopago.options[mediopago.selectedIndex].value == 2){
+function validaciones() {
+  let elementosEnvio = document.getElementsByClassName("campos-form-envio");
+  let elementosTarjeta = document.getElementsByClassName("campos-tarjeta-debito");
+  let elementosBanco = document.getElementsByClassName("campos-cuenta-bancaria");
+  let msg = "";
+  let flag = true;
+
+  /* Que los campos del formulario de envío no estén vacíos*/
+  let cuentoEnvio = 0
+  for (let i = 0; i < elementosEnvio.length; i++) {
+    const element = elementosEnvio[i];
+    if (element.value == "") {
+      cuentoEnvio += 1;
+    }
+  }
+  if (cuentoEnvio > 0) {
+    flag = false;
+    msg += "- No pueden haber campos vacíos en el formulario de envío <br>"
+  }
+
+  let mediopago = document.getElementById("selectorFormaPago");
+  if (mediopago.options[mediopago.selectedIndex].value == 1) {
+    /* Que los campos del formulario de Tarjeta de credito no estén vacíos*/
+    let cuentoTarjeta = 0;
+    for (let i = 0; i < elementosTarjeta.length; i++) {
+      const element = elementosTarjeta[i];
+      if (element.value == "") {
+        cuentoTarjeta += 1;
+      }
+    }
+    if (cuentoTarjeta > 0) {
+      flag = false;
+      msg += "- No pueden haber campos vacíos en el formulario de método de pago. <br>"
+    }
+  }
+  if (mediopago.options[mediopago.selectedIndex].value == (2)) {
+    /*Que los elementos del formulario banco no esten vacios */
+    let cuentoBanco = 0;
+    for (let i = 0; i < elementosBanco.length; i++) {
+      const element = elementosBanco[i];
+      if (element.value == "") {
+        cuentoBanco += 1;
+      }
+    }
+    if (cuentoBanco > 0) {
+      flag = false;
+      msg += "- No pueden haber campos vacíos en el formulario de método de pago. <br>"
+    }
+  }
+  document.getElementById("feedback").classList.remove('d-none');
+  document.getElementById("feedback").innerHTML = msg;
+  return flag;
+}
+
+
+
+function formpago() {
+  let mediopago = document.getElementById("selectorFormaPago");
+  if (mediopago.options[mediopago.selectedIndex].value == 1) {
     document.getElementById("formcuentabancaria").classList.add('d-none');
     document.getElementById("formtarjeta").classList.remove('d-none');
   }
-  if(mediopago.options[mediopago.selectedIndex].value == (3)){
+  if (mediopago.options[mediopago.selectedIndex].value == (2)) {
     document.getElementById("formtarjeta").classList.add('d-none');
     document.getElementById("formcuentabancaria").classList.remove('d-none');
   }
 }
 
-function compraCorrecta() {
-  let mediopago = document.getElementById("inlineFormCustomSelect");
-  if (mediopago.options[mediopago.selectedIndex].value == 0) {
-    alert("¡Selecciona el medio de pago antes de continuar!");
 
-  } else {
-    let nombre = JSON.parse(mis_datos_json).nombre;
-    document.getElementById("exampleModalCenterTitle").innerHTML = "¡Felicitaciones " + nombre + "!";
-    document.getElementById("contenidoAlertacompra").innerHTML = `¡Haz realizado una compra satisfactoriamente por el valor de <b>${document.getElementById("preciototal").innerHTML} UYU </b> los cuales se han abonado con el medio de pago: <b>${mediopago.options[mediopago.selectedIndex].text}</b>. Recuerda que cuentas con <b>2 días hábiles</b> para poder realizar reclamos de facturación.`;
-  }
 
-}
+
 
 function calcTotal() {
   let totalUYU = 0;
@@ -40,7 +87,28 @@ function calcTotal() {
       totalUSD += parseInt(subs[i].innerHTML);
     }
   }
-  let preciototal = totalUYU + (totalUSD * 40)
+
+  let tipoenvio
+  var envio = document.getElementsByName('radioEnvio');
+  for (i = 0; i < envio.length; i++) {
+    if (envio[i].checked) {
+      if (envio[i].value == "premium") {
+        tipoenvio = 0.15;
+      }
+      if (envio[i].value == "express") {
+        tipoenvio = 0.1;
+      }
+      if (envio[i].value == "standard") {
+        tipoenvio = 0.05;
+      }
+    }
+  }
+
+  let totalcompra = totalUYU + (totalUSD * 40);
+  let costenvio = Math.round(totalcompra * tipoenvio)
+  let preciototal = totalcompra + costenvio;
+
+  document.getElementById("costoenvio").innerHTML = costenvio;
   document.getElementById("totaluyu").innerHTML = totalUYU;
   document.getElementById("totalusd").innerHTML = totalUSD;
   document.getElementById("preciototal").innerHTML = preciototal;
@@ -51,9 +119,16 @@ function modificarSubtotal(preciounit, i) {
   let subtotal = preciounit * cantidad;
   document.getElementById(`subtotal${i}`).innerHTML = subtotal;
   calcTotal()
+  calcEnvio()
 }
 
-
+function eliminar(i) {
+  if (listadocarrito.length > 1) {
+    listadocarrito.splice(i, 1);
+    document.getElementById(`element${i}`).remove();
+    calcTotal();
+  }
+}
 
 document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(CART_2_CURRENCY).then(function (result) {
@@ -65,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
       let element = listadocarrito[i];
       let sub = element.unitCost * element.count
       counter++;
-      document.getElementById("listacarrito").innerHTML += `<tr>
+      document.getElementById("listacarrito").innerHTML += `<tr id="item${[i]}>
             <th scope="row">${counter}</th>
             <td><img src="${element.src}"style="width:60px;"></td>
             <td>${element.name}</td>
@@ -73,6 +148,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             <td>
             <div class="input-group mb-3 mx-auto" "><input type="Number" id="cantidad${[i]}" onchange="modificarSubtotal(${element.unitCost},${i})" class="mx-auto form-control" placeholder="Cantidad" value="${element.count}" aria-label="Username" aria-describedby="addon-wrapping" min="0";></div></td>
             <td><div class="row"><div class="col subtotal" id="subtotal${[i]}">${sub}</div><div class="col">${element.currency}</div></div></td>
+            <td id="deleteitem" onclick="eliminar(${[i]})"> X </td>
           </tr>  `;
       calcTotal();
     }

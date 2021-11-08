@@ -107,8 +107,7 @@
                     </h2>
                   </div>
 
-                  <div id="collapseOne" class="collapse" " aria-labelledby=" headingOne"
-                    data-parent="#accordionExample">
+                  <div id="collapseOne" class="collapse" aria-labelledby=" headingOne" data-parent="#accordionExample">
                     <div class="card-body">
 
                       <h5>Envío</h5>
@@ -117,23 +116,23 @@
 
                           <div class="col-sm-10">
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
-                                value="option1" checked>
-                              <label class="form-check-label" for="gridRadios1">
+                              <input class="form-check-input" type="radio" name="radioEnvio" id="radioEnvio1"
+                                value="premium" onchange="calcTotal()">
+                              <label class="form-check-label" for="radioEnvio1">
                                 Premium (2-5 días) - Costo del 15% sobre el subtotal.
                               </label>
                             </div>
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
-                                value="option2">
-                              <label class="form-check-label" for="gridRadios2">
+                              <input class="form-check-input" type="radio" name="radioEnvio" id="radioEnvio2"
+                                value="express" onchange="calcTotal()">
+                              <label class="form-check-label" for="radioEnvio2">
                                 Express (5-8 días) - Costo del 7% sobre el subtotal.
                               </label>
                             </div>
                             <div class="form-check ">
-                              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
-                                value="option3">
-                              <label class="form-check-label" for="gridRadios3">
+                              <input class="form-check-input" type="radio" name="radioEnvio" id="radioEnvio3"
+                                value="standard" checked onchange="calcTotal()">
+                              <label class="form-check-label" for="radioEnvio3">
                                 Standard (12 a 15 días) - Costo del 5% sobre el subtotal.
                               </label>
                             </div>
@@ -145,17 +144,17 @@
                       <form class="needs-validation" novalidate>
                         <div class="form-row">
                           <div class="col-md-4 mb-3">
-                            <label for="validationCustom01">Nombre</label>
-                            <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre"
-                              required>
+                            <label for="camposFormEnvio01">Nombre</label>
+                            <input type="text" class="campos-form-envio form-control" id="camposFormEnvio01"
+                              placeholder="Nombre" required>
                             <div class="valid-feedback">
                               Correcto
                             </div>
                           </div>
                           <div class="col-md-4 mb-3">
-                            <label for="validationCustom02">Apellido</label>
-                            <input type="text" class="form-control" id="validationCustom02" placeholder="Apellido"
-                              required>
+                            <label for="camposFormEnvio02">Apellido</label>
+                            <input type="text" class="campos-form-envio form-control" id="camposFormEnvio02"
+                              placeholder="Apellido" required>
                             <div class="valid-feedback">
                               Correcto
                             </div>
@@ -164,241 +163,114 @@
                         </div>
                         <div class="form-row">
                           <div class="col-md-6 mb-3">
-                            <label for="validationCustom03">País</label>
-                            <input type="text" class="form-control" id="validationCustom03" placeholder="Pais" required>
+                            <label for="camposFormEnvio03">País</label>
+                            <input type="text" class="campos-form-envio form-control" id="camposFormEnvio03"
+                              placeholder="Pais" required>
                             <div class="invalid-feedback">
                               Completa este campo
                             </div>
                           </div>
                           <div class="col-md-3 mb-3">
-                            <label for="validationCustom04">Localidad</label>
-                            <input type="text" class="form-control" id="validationCustom04" placeholder="Localidad"
-                              required>
+                            <label for="camposFormEnvio04">Localidad</label>
+                            <input type="text" class="campos-form-envio form-control" id="camposFormEnvio04"
+                              placeholder="Localidad" required>
                             <div class="invalid-feedback">
                               Completa este campo
                             </div>
                           </div>
                           <div class="col-md-3 mb-3">
-                            <label for="validationCustom05">Zip</label>
-                            <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
+                            <label for="camposFormEnvio05">Zip</label>
+                            <input type="text" class="campos-form-envio form-control" id="camposFormEnvio05"
+                              placeholder="Zip" required>
                             <div class="invalid-feedback">
                               Por favor complet zip.
                             </div>
                           </div>
                         </div>
 
-                        <button class="btn btn-primary" type="submit">Guardar</button>
                       </form>
 
-                      <script>
-                        // Example starter JavaScript for disabling form submissions if there are invalid fields
-                        (function () {
-                          'use strict';
-                          window.addEventListener('load', function () {
-                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                            var forms = document.getElementsByClassName('needs-validation');
-                            // Loop over them and prevent submission
-                            var validation = Array.prototype.filter.call(forms, function (form) {
-                              form.addEventListener('submit', function (event) {
-                                if (form.checkValidity() === false) {
-                                  event.preventDefault();
-                                  event.stopPropagation();
-                                }
-                                form.classList.add('was-validated');
-                              }, false);
-                            });
-                          }, false);
-                        })();
-                      </script>
+
                     </div>
                   </div>
                 </div>
                 <div class="card">
                   <div class="card-header" id="headingTwo">
-                    <h2 class="mb-0">
-                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Preferencias de pago.
-                      </button>
-                    </h2>
-                  </div>
-                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-auto my-1">
-                          <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"></label>
-                          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" onchange="formpago()">
-                            <option value="0" selected disabled>Seleccionar método de pago</option>
-                            <option value="1">Tarjeta Visa</option>
-                            <option value="2">Tarjeta Master</option>
-                            <option value="3">Transferencia Bancaria</option>
-                          </select>
-                        </div>
-                        <div class="col-auto my-1">
-                          <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                            <label class="custom-control-label" for="customControlAutosizing">Recordar mi
-                              preferencia</label>
-                          </div>
-                        </div>
-                        <!--Form tarjeta-->
-                        <form class="needs-validation d-none" novalidate id="formtarjeta">
-                          <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                              <label for="validationCustom01">Nombre del titular:</label>
-                              <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre"
-                                required>
-                              <div class="valid-feedback">
-                                Correcto
+                    <div class="table-responsive" style="overflow: hidden !important;">
+                      <table class="table table-striped table-hover table-borderless table-sms">
+                        <tbody>
+                          <tr>
+                            <td class="col-8">Costo parcial UYU:</td>
+                            <td class="col">
+                              <div class="row">
+                                <div class="col" id="totaluyu"></div>
+                                <div class="col">UYU</div>
                               </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                              <label for="validationCustom02">Apellido del titular</label>
-                              <input type="text" class="form-control" id="validationCustom02" placeholder="Apellido"
-                                required>
-                              <div class="valid-feedback">
-                                Correcto
-                              </div>
-                            </div>
+                            </td>
+                          </tr>
+                          <tr>
 
-                          </div>
-                          <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                              <label for="validationCustom03">Número de tarjeta</label>
-                              <input type="number" class="form-control" id="nrotarjeta" placeholder="Nro tarjeta"
-                                required>
-                              <div class="invalid-feedback">
-                                Completa este campo
+                            <td class="col-8">Costo parcial USD:</td>
+                            <td class="col">
+                              <div class="row">
+                                <div class="col" id="totalusd"></div>
+                                <div class="col">USD</div>
                               </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                              <label for="validationCustom04">Código seguridad</label>
-                              <input type="text" class="form-control" id="cdgoseguridad" placeholder="Código seguridad"
-                                required>
-                              <div class="invalid-feedback">
-                                Completa este campo
-                              </div>
-                            </div>
+                            </td>
 
-                          </div>
+                          </tr>
+                          <tr>
 
-                          <button class="btn btn-primary" type="submit">Guardar</button>
-                        </form>
+                            <td class="col-8">Envío:</td>
+                            <td class="col">
+                              <div class="row">
+                                <div class="col" id="costoenvio"></div>
+                                <div class="col">UYU</div>
+                              </div>
+                            </td>
 
-                        <!--Form cuenta bancaria-->
-                        <form class="needs-validation d-none" novalidate id="formcuentabancaria">
-                          <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                              <label for="validationCustom01">Nombre del titular:</label>
-                              <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre"
-                                required>
-                              <div class="valid-feedback">
-                                Correcto
-                              </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                              <label for="validationCustom02">Apellido del titular</label>
-                              <input type="text" class="form-control" id="validationCustom02" placeholder="Apellido"
-                                required>
-                              <div class="valid-feedback">
-                                Correcto
-                              </div>
-                            </div>
+                          </tr>
+                          <tr>
 
-                          </div>
-                          <div class="form-row">
-                            <div class="col-md-3 mb-3">
-                              <label for="validationCustom03">Dependencia</label>
-                              <input type="number" class="form-control" id="dependencia" placeholder="Dependencia"
-                                required>
-                              <div class="invalid-feedback">
-                                Completa este campo
+                            <td class="col-8" style="font-weight:bold;">Total (UYU):</td>
+                            <td class="col-md-6">
+                              <div class="row">
+                                <div class="col" id="preciototal" style="font-weight:bold;"></div>
+                                <div class="col" style="font-weight:bold;">UYU</div>
                               </div>
-                            </div>
-                            <div class="col-md-5 mb-3">
-                              <label for="validationCustom03">Número de cuenta</label>
-                              <input type="number" class="form-control" id="nrocuenta" placeholder="Número de cuenta"
-                                required>
-                              <div class="invalid-feedback">
-                                Completa este campo
-                              </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                              <label for="validationCustom04">Nombre del banco:</label>
-                              <input type="text" class="form-control" id="namebanko" placeholder="Nombre del banco"
-                                required>
-                              <div class="invalid-feedback">
-                                Completa este campo
-                              </div>
-                            </div>
+                            </td>
+                          </tr>
 
-                          </div>
+                        </tbody>
 
-                          <button class="btn btn-primary" type="submit">Guardar</button>
-                        </form>
-                      </div>
+                      </table>
+                      <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="modal" data-target="#modalFormaPago">
+
+                          Preferencias de pago.
+                        </button>
+                      </h2>
                     </div>
+
+
+
+
+
+
+
                   </div>
-
+                </div>
+              </div>
+              <div class="row">
+                <div class="container">
 
 
 
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="container">
-
-
-                <div class="table-responsive" style="overflow: hidden !important;">
-                  <table class="table table-striped table-hover table-borderless table-sms">
-                    <tbody>
-                      <tr>
-                        <td class="col-8">Costo parcial UYU:</td>
-                        <td class="col">
-                          <div class="row">
-                            <div class="col" id="totaluyu"></div>
-                            <div class="col">UYU</div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-
-                        <td class="col-8">Costo parcial USD:</td>
-                        <td class="col">
-                          <div class="row">
-                            <div class="col" id="totalusd"></div>
-                            <div class="col">USD</div>
-                          </div>
-                        </td>
-
-                      </tr>
-                      <tr>
-
-                        <td class="col-8" style="font-weight:bold;">Total (UYU):</td>
-                        <td class="col-md-6">
-                          <div class="row">
-                            <div class="col" id="preciototal" style="font-weight:bold;"></div>
-                            <div class="col" style="font-weight:bold;">UYU</div>
-                          </div>
-                        </td>
-                      </tr>
-
-                    </tbody>
-
-                  </table>
-                </div>
-              </div>
 
 
             </div>
-            <div class="row">
-
-              <button class="btn btn-info btn-lg btn-block" onclick="compraCorrecta()" data-toggle="modal"
-                data-target="#exampleModalCenter">Comprar</button>
-            </div>
-
-
 
           </div>
         </div>
@@ -422,13 +294,13 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
 </body>
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
+<!-- Modal confirmación de compra -->
+<div class="modal fade" id="modalCompraRealizada" tabindex="-1" role="dialog"
+  aria-labelledby="modalCompraRealizadaTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
+        <h5 class="modal-title" id="modalCompraRealizadaTitle"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -450,6 +322,164 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal"
           onclick="window.location='inicio.html'">Finalizar compra</button>
       </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL PREFERENCIAS DE PAGO-->
+<div class="modal fade" id="modalFormaPago" tabindex="-1" role="dialog" aria-labelledby="modalFormaPagoTitle"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalFormaPagoTitle">Preferencias de pago</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-auto my-1">
+              <label class="mr-sm-2 sr-only" for="selectorFormaPago"></label>
+              <select class="custom-select mr-sm-2" id="selectorFormaPago" onchange="formpago()">
+                <option value="0" selected disabled>Seleccionar método de pago</option>
+                <option value="1">Tarjeta Debito</option>
+                <option value="2">Transferencia Bancaria</option>
+              </select>
+            </div>
+            <div class="col-auto my-1">
+              <div class="custom-control custom-checkbox mr-sm-2">
+                <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                <label class="custom-control-label" for="customControlAutosizing">Recordar mi
+                  preferencia</label>
+              </div>
+            </div>
+            <!--Form tarjeta-->
+            <form class="needs-validation d-none" novalidate id="formtarjeta">
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="form-tarjeta01">Nombre del titular:</label>
+                  <input type="text" class="campos-tarjeta-debito form-control" id="form-tarjeta01" placeholder="Nombre"
+                    required>
+                  <div class="valid-feedback">
+                    Correcto
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="form-tarjeta02">Apellido del titular</label>
+                  <input type="text" class="campos-tarjeta-debito form-control" id="form-tarjeta02"
+                    placeholder="Apellido" required>
+                  <div class="valid-feedback">
+                    Correcto
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="form-tarjeta03">Número de tarjeta</label>
+                  <input type="number" class="campos-tarjeta-debito form-control" id="nrotarjeta"
+                    placeholder="Nro tarjeta" required>
+                  <div class="invalid-feedback">
+                    Completa este campo
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="form-tarjeta04">Código seguridad</label>
+                  <input type="text" class="campos-tarjeta-debito form-control" id="cdgoseguridad"
+                    placeholder="Código seguridad" required>
+                  <div class="invalid-feedback">
+                    Completa este campo
+                  </div>
+                </div>
+
+              </div>
+
+              <button type="submit" class="btn btn-info">Finalizar compra</button>
+            </form>
+
+            <!--Form cuenta bancaria-->
+            <form class="needs-validation d-none" id="formcuentabancaria" novalidate>
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="form-cuenta-bancaria01">Nombre del titular:</label>
+                  <input type="text" class="form-control campos-cuenta-bancaria" id="form-cuenta-bancaria01"
+                    placeholder="Nombre" required>
+                  <div class="valid-feedback">
+                    Correcto
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="form-cuenta-bancaria02">Apellido del titular</label>
+                  <input type="text" class="form-control campos-cuenta-bancaria" id="form-cuenta-bancaria02"
+                    placeholder="Apellido" required>
+                  <div class="valid-feedback">
+                    Correcto
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-row">
+                <div class="col-md-3 mb-3">
+                  <label for="form-cuenta-bancaria03">Dependencia</label>
+                  <input type="number" class="form-control campos-cuenta-bancaria" id="dependencia"
+                    placeholder="Dependencia" required>
+                  <div class="invalid-feedback">
+                    Completa este campo
+                  </div>
+                </div>
+                <div class="col-md-5 mb-3">
+                  <label for="form-cuenta-bancaria03">Número de cuenta</label>
+                  <input type="number" class="form-control campos-cuenta-bancaria" id="nrocuenta"
+                    placeholder="Número de cuenta" required>
+                  <div class="invalid-feedback">
+                    Completa este campo
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="form-cuenta-bancaria04">Nombre del banco:</label>
+                  <input type="text" class="form-control campos-cuenta-bancaria" id="namebank"
+                    placeholder="Nombre del banco" required>
+                  <div class="invalid-feedback">
+                    Completa este campo
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-info">Finalizar compra</button>
+
+              <script>
+                var form = document.getElementById("formcuentabancaria");
+                form.addEventListener('submit', function (event) {
+                  if (!validaciones()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                  } else {
+
+                    document.getElementById("feedback").innerHTML = "";
+
+                  }
+                })
+
+                var form2 = document.getElementById("formtarjeta");
+                form2.addEventListener('submit', function (event) {
+                  if (!validaciones()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                  } else {
+                    document.getElementById("feedback").innerHTML = "";
+                  }
+                })
+              </script>
+            </form>
+          </div>
+        </div>
+
+        <div class="alert-warning alert-dismissible fade show d-none" id="feedback">
+
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
