@@ -4,21 +4,8 @@
 var listadocarrito
 let counter = 0;
 
-function eliminar(i) {
-  if (listadocarrito.length > 1) {
-    listadocarrito.splice(i, 1);
-    document.getElementById(`item${i}`).remove();
-    calcTotal();
-  } else {
-    document.getElementById("columnalistacarrito").innerHTML = "";
-    document.getElementById("columnalistacarrito").innerHTML += `<div class="alert alert-warning" role="alert">
-    <h4 class="alert-heading">¡El carrito está vacío!</h4>
-    <hr>
-    <p>En este momento cuentas con el carrito de compras vacío. ¡Añade un artículo navegando por nuestro sitio!</p>
-    
-  </div>`
-  }
-}
+
+
 function validaciones() {
   let elementosEnvio = document.getElementsByClassName("campos-form-envio");
   let elementosTarjeta = document.getElementsByClassName("campos-tarjeta-debito");
@@ -163,5 +150,19 @@ document.addEventListener("DOMContentLoaded", function (e) {
       calcTotal();
     }
   });
-
 });
+
+function eliminar(i) {
+  if (listadocarrito.length < 1) {
+    document.getElementById("columnalistacarrito").innerHTML = `<div class="alert alert-warning" role="alert">
+    <h4 class="alert-heading">¡El carrito está vacío!</h4>
+    <hr>
+    <p>En este momento cuentas con el carrito de compras vacío. ¡Añade un artículo navegando por nuestro sitio!</p>
+    
+  </div>`
+  } else {
+    listadocarrito.splice(i, 1);
+    document.getElementById(`item${i}`).remove();
+    calcTotal();
+  }
+}
