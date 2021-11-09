@@ -4,6 +4,21 @@
 var listadocarrito
 let counter = 0;
 
+function eliminar(i) {
+  if (listadocarrito.length > 1) {
+    listadocarrito.splice(i, 1);
+    document.getElementById(`item${i}`).remove();
+    calcTotal();
+  } else {
+    document.getElementById("columnalistacarrito").innerHTML = "";
+    document.getElementById("columnalistacarrito").innerHTML += `<div class="alert alert-warning" role="alert">
+    <h4 class="alert-heading">¡El carrito está vacío!</h4>
+    <hr>
+    <p>En este momento cuentas con el carrito de compras vacío. ¡Añade un artículo navegando por nuestro sitio!</p>
+    
+  </div>`
+  }
+}
 function validaciones() {
   let elementosEnvio = document.getElementsByClassName("campos-form-envio");
   let elementosTarjeta = document.getElementsByClassName("campos-tarjeta-debito");
@@ -122,13 +137,7 @@ function modificarSubtotal(preciounit, i) {
   calcEnvio()
 }
 
-function eliminar(i) {
-  if (listadocarrito.length > 1) {
-    listadocarrito.splice(i, 1);
-    document.getElementById(`element${i}`).remove();
-    calcTotal();
-  }
-}
+
 
 document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(CART_2_CURRENCY).then(function (result) {
@@ -140,15 +149,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
       let element = listadocarrito[i];
       let sub = element.unitCost * element.count
       counter++;
-      document.getElementById("listacarrito").innerHTML += `<tr id="item${[i]}>
-            <th scope="row">${counter}</th>
+      document.getElementById("listacarrito").innerHTML += `<tr id="item${[i]}">
+            <th scope="row"></th>
+            <td>${counter}</td>
             <td><img src="${element.src}"style="width:60px;"></td>
             <td>${element.name}</td>
             <td>${element.unitCost} ${element.currency}</td>
             <td>
             <div class="input-group mb-3 mx-auto" "><input type="Number" id="cantidad${[i]}" onchange="modificarSubtotal(${element.unitCost},${i})" class="mx-auto form-control" placeholder="Cantidad" value="${element.count}" aria-label="Username" aria-describedby="addon-wrapping" min="0";></div></td>
             <td><div class="row"><div class="col subtotal" id="subtotal${[i]}">${sub}</div><div class="col">${element.currency}</div></div></td>
-            <td id="deleteitem" onclick="eliminar(${[i]})"> X </td>
+            <td style="cursor:pointer;color:red !important;" onclick="eliminar(${[i]})">✘</td>
           </tr>  `;
       calcTotal();
     }
