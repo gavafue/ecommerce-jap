@@ -98,7 +98,7 @@ function calcTotal() {
         tipoenvio = 0.15;
       }
       if (envio[i].value == "express") {
-        tipoenvio = 0.1;
+        tipoenvio = 0.07;
       }
       if (envio[i].value == "standard") {
         tipoenvio = 0.05;
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             <td>${element.name}</td>
             <td>${element.unitCost} ${element.currency}</td>
             <td>
-            <div class="input-group mb-3 mx-auto" "><input type="Number" id="cantidad${[i]}" onchange="modificarSubtotal(${element.unitCost},${i})" class="mx-auto form-control" placeholder="Cantidad" value="${element.count}" aria-label="Username" aria-describedby="addon-wrapping" min="0";></div></td>
+            <div class="input-group mb-3 mx-auto" "><input type="Number" id="cantidad${[i]}" onchange="modificarSubtotal(${element.unitCost},${i})" class="mx-auto form-control" placeholder="Cantidad" value="${element.count}" aria-label="Username" aria-describedby="addon-wrapping" min="1";></div></td>
             <td><div class="row"><div class="col subtotal" id="subtotal${[i]}">${sub}</div><div class="col">${element.currency}</div></div></td>
             <td style="cursor:pointer;color:red !important;" onclick="eliminar(${[i]})">✘</td>
           </tr>  `;
