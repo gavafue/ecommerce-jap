@@ -56,25 +56,25 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5"  id="columnalistacarrito">
+  <div class="container p-5" id="columnalistacarrito">
     <div class="row">
       <div class="text-center p-4 mx-auto">
         <h2>Carrito de compras</h2>
         <p class="lead">Encontrarás aquí todos los productos que hayas agregado al carrito.</p>
         <p class="small alert-warning py-3"><strong>Nota: </strong>es necesario que sepas que todos los productos serán
           cotizados al final de la compra en la moneda: <strong>UYU</strong>.</p>
-          <div id="pruebajson"></div>
+        <div id="pruebajson"></div>
       </div>
     </div>
     <div class="row">
 
       <div class="col">
-        <div class="row bg-light" >
+        <div class="row bg-light">
           <div class="table-responsive" style="overflow: hidden;">
             <table class="table table-hover table-light text-center">
               <thead>
                 <tr>
-               
+
                   <th scope="col"></th>
                   <th scope="col"></th>
                   <th scope="col">Nombre del artículo.</th>
@@ -103,7 +103,7 @@
                   <div class="card-header" id="headingOne">
                     <h2 class="mb-0">
                       <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                        aria-expanded="true" aria-controls="collapseOne">
+                        aria-expanded="true" aria-controls="collapseOne" id="anuncioenvio">
                         Envío
                       </button>
                     </h2>
@@ -143,22 +143,22 @@
                       </fieldset>
                       <hr>
                       <!--Datos de envío-->
-                      <form class="needs-validation" novalidate>
+                      <form class="needs-validation" novalidate id="form-envio">
                         <div class="form-row">
                           <div class="col-md-4 mb-3">
                             <label for="camposFormEnvio01">Nombre</label>
                             <input type="text" class="campos-form-envio form-control" id="camposFormEnvio01"
                               placeholder="Nombre" required>
-                            <div class="valid-feedback">
-                              Correcto
+                            <div class="invalid-feedback">
+                              Completa este campo
                             </div>
                           </div>
                           <div class="col-md-4 mb-3">
                             <label for="camposFormEnvio02">Apellido</label>
                             <input type="text" class="campos-form-envio form-control" id="camposFormEnvio02"
                               placeholder="Apellido" required>
-                            <div class="valid-feedback">
-                              Correcto
+                            <div class="invalid-feedback">
+                              Completa este campo
                             </div>
                           </div>
 
@@ -185,7 +185,7 @@
                             <input type="number" class="campos-form-envio form-control" id="camposFormEnvio05"
                               placeholder="Zip" required>
                             <div class="invalid-feedback">
-                              Por favor complet zip.
+                              Completa este campo
                             </div>
                           </div>
                         </div>
@@ -296,37 +296,7 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
 </body>
-<!-- Modal confirmación de compra -->
-<div class="modal fade" id="modalCompraRealizada" tabindex="-1" role="dialog"
-  aria-labelledby="modalCompraRealizadaTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalCompraRealizadaTitle"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="alert-success d-inline">
-          <h4 class="alert-heading">¡Compra realizada con éxito!</h4>
-          <div class="row">
-            <div class="col-2"><img src="/img/iconcheck.png"></div>
-            <div class="col">
-              <p id="contenidoAlertacompra"></p>
-            </div>
-          </div>
-          <hr>
-          <p class="mb-0">¡Muchas gracias por tu preferencia!</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"
-          onclick="window.location='inicio.html'">Finalizar compra</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 <!-- MODAL PREFERENCIAS DE PAGO-->
 <div class="modal fade" id="modalFormaPago" tabindex="-1" role="dialog" aria-labelledby="modalFormaPagoTitle"
   aria-hidden="true">
@@ -357,22 +327,22 @@
               </div>
             </div>
             <!--Form tarjeta-->
-            <form class="needs-validation d-none" novalidate id="formtarjeta">
+            <form class="needs-validation d-none" action="compracorrecta.html" novalidate id="formtarjeta">
               <div class="form-row">
                 <div class="col-md-6 mb-3">
                   <label for="form-tarjeta01">Nombre del titular:</label>
                   <input type="text" class="campos-tarjeta-debito form-control" id="form-tarjeta01" placeholder="Nombre"
                     required>
-                  <div class="valid-feedback">
-                    Correcto
+                  <div class="invalid-feedback">
+                    Completa este campo
                   </div>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="form-tarjeta02">Apellido del titular</label>
                   <input type="text" class="campos-tarjeta-debito form-control" id="form-tarjeta02"
                     placeholder="Apellido" required>
-                  <div class="valid-feedback">
-                    Correcto
+                  <div class="invalid-feedback">
+                    Completa este campo
                   </div>
                 </div>
 
@@ -401,22 +371,22 @@
             </form>
 
             <!--Form cuenta bancaria-->
-            <form class="needs-validation d-none" id="formcuentabancaria" novalidate>
+            <form class="needs-validation d-none" action="compracorrecta.html" id="formcuentabancaria" novalidate>
               <div class="form-row">
                 <div class="col-md-6 mb-3">
                   <label for="form-cuenta-bancaria01">Nombre del titular:</label>
                   <input type="text" class="form-control campos-cuenta-bancaria" id="form-cuenta-bancaria01"
                     placeholder="Nombre" required>
-                  <div class="valid-feedback">
-                    Correcto
+                  <div class="invalid-feedback">
+                    Completa este campo
                   </div>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="form-cuenta-bancaria02">Apellido del titular</label>
                   <input type="text" class="form-control campos-cuenta-bancaria" id="form-cuenta-bancaria02"
                     placeholder="Apellido" required>
-                  <div class="valid-feedback">
-                    Correcto
+                  <div class="invalid-feedback">
+                    Completa este campo
                   </div>
                 </div>
 
@@ -454,10 +424,15 @@
                 var form = document.getElementById("formcuentabancaria");
                 form.addEventListener('submit', function (event) {
                   if (!validaciones()) {
-                    event.preventDefault()
-                    event.stopPropagation()
+                    event.preventDefault();
+                    event.stopPropagation();
+                    form.classList.add('was-validated');
+                    document.getElementById("form-envio").classList.add("was-validated");
+                    document.getElementById("anuncioenvio").innerHTML +=
+                      `<span class="badge badge-danger">Tienes campos sin completar aqui</span>`;
                   } else {
-
+                    form.classList.remove('was-validated');
+                    document.getElementById("form-envio").classList.remove("was-validated");
                     document.getElementById("feedback").innerHTML = "";
 
                   }
@@ -468,8 +443,14 @@
                   if (!validaciones()) {
                     event.preventDefault()
                     event.stopPropagation()
+                    form2.classList.add('was-validated');
+                    document.getElementById("form-envio").classList.add("was-validated");
+                    document.getElementById("anuncioenvio").innerHTML +=
+                      `<span class="badge badge-danger">Tienes campos sin completar aqui</span>`;
                   } else {
-                    document.getElementById("feedback").innerHTML = "";
+                    form2.classList.remove('was-validated');
+                    document.getElementById("form-envio").classList.remove("was-validated");
+                    
                   }
                 })
               </script>

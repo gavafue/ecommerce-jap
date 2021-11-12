@@ -20,6 +20,9 @@ function validaciones() {
     if (element.value == "") {
       cuentoEnvio += 1;
     }
+    else{
+      element.setCustomValidity("");
+    }
   }
   if (cuentoEnvio > 0) {
     flag = false;
@@ -34,6 +37,8 @@ function validaciones() {
       const element = elementosTarjeta[i];
       if (element.value == "") {
         cuentoTarjeta += 1;
+      }else{
+        element.setCustomValidity("");
       }
     }
     if (cuentoTarjeta > 0) {
@@ -48,6 +53,8 @@ function validaciones() {
       const element = elementosBanco[i];
       if (element.value == "") {
         cuentoBanco += 1;
+      }else{
+        element.setCustomValidity("");
       }
     }
     if (cuentoBanco > 0) {
@@ -165,7 +172,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
       listadocarrito = result.data.articles;
       cargarArticulos(listadocarrito);
     }
-
-
   });
 });
