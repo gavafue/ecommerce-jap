@@ -103,8 +103,8 @@
                   <div class="card-header" id="headingOne">
                     <h2 class="mb-0">
                       <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                        aria-expanded="true" aria-controls="collapseOne" id="anuncioenvio">
-                        Envío
+                        aria-expanded="true" aria-controls="collapseOne" >
+                        Envío<span id="anuncioenvio"></span>
                       </button>
                     </h2>
                   </div>
@@ -428,7 +428,7 @@
                     event.stopPropagation();
                     form.classList.add('was-validated');
                     document.getElementById("form-envio").classList.add("was-validated");
-                    document.getElementById("anuncioenvio").innerHTML +=
+                    document.getElementById("anuncioenvio").innerHTML =
                       `<span class="badge badge-danger">Tienes campos sin completar aqui</span>`;
                   } else {
                     form.classList.remove('was-validated');
@@ -445,7 +445,7 @@
                     event.stopPropagation()
                     form2.classList.add('was-validated');
                     document.getElementById("form-envio").classList.add("was-validated");
-                    document.getElementById("anuncioenvio").innerHTML +=
+                    document.getElementById("anuncioenvio").innerHTML =
                       `<span class="badge badge-danger">Tienes campos sin completar aqui</span>`;
                   } else {
                     form2.classList.remove('was-validated');

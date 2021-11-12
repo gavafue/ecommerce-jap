@@ -26,7 +26,7 @@ function validaciones() {
   }
   if (cuentoEnvio > 0) {
     flag = false;
-    msg += "- No pueden haber campos vacíos en el formulario de envío <br>"
+    msg += "- No pueden haber campos vacíos en el formulario de envío. Compruébalo <br>"
   }
 
   let mediopago = document.getElementById("selectorFormaPago");
