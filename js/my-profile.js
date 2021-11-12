@@ -28,16 +28,16 @@ function probando() {
         if (avatar[i].checked) {
 
             if (avatar[i].value == "option1") {
-                avatarimg = "/img/1.png";
+                avatarimg = "img/avatar1.png";
             }
             if (avatar[i].value == "option2") {
-                avatarimg = "/img/2.png";
+                avatarimg = "img/avatar2.png";
             }
             if (avatar[i].value == "option3") {
-                avatarimg = "/img/3.png";
+                avatarimg = "img/avatar3.png";
             }
             if (avatar[i].value == "option4") {
-                avatarimg = "/img/4.png";
+                avatarimg = "img/avatar4.png";
             }
         }
     }

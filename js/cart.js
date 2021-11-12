@@ -2,7 +2,7 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 var listadocarrito
-let counter = 0;
+
 
 
 
@@ -124,45 +124,48 @@ function modificarSubtotal(preciounit, i) {
   calcEnvio()
 }
 
-
-
-document.addEventListener("DOMContentLoaded", function (e) {
-  getJSONData(CART_2_CURRENCY).then(function (result) {
-    if (result.status === "ok") {
-      listadocarrito = result.data.articles;
-    }
-
-    for (let i = 0; i < listadocarrito.length; i++) {
-      let element = listadocarrito[i];
-      let sub = element.unitCost * element.count
-      counter++;
-      document.getElementById("listacarrito").innerHTML += `<tr id="item${[i]}">
-            <th scope="row"></th>
-            <td>${counter}</td>
-            <td><img src="${element.src}"style="width:60px;"></td>
-            <td>${element.name}</td>
-            <td>${element.unitCost} ${element.currency}</td>
-            <td>
-            <div class="input-group mb-3 mx-auto" "><input type="Number" id="cantidad${[i]}" onchange="modificarSubtotal(${element.unitCost},${i})" class="mx-auto form-control" placeholder="Cantidad" value="${element.count}" aria-label="Username" aria-describedby="addon-wrapping" min="1";></div></td>
-            <td><div class="row"><div class="col subtotal" id="subtotal${[i]}">${sub}</div><div class="col">${element.currency}</div></div></td>
-            <td style="cursor:pointer;color:red !important;" onclick="eliminar(${[i]})">✘</td>
-          </tr>  `;
-      calcTotal();
-    }
-  });
-});
-
 function eliminar(i) {
-  if (listadocarrito.length < 1) {
+  if (listadocarrito.length > 1) {
+    listadocarrito.splice(i, 1);
+    cargarArticulos(listadocarrito);
+    } else {
     document.getElementById("columnalistacarrito").innerHTML = `<div class="alert alert-warning" role="alert">
     <h4 class="alert-heading">¡El carrito está vacío!</h4>
     <hr>
     <p>En este momento cuentas con el carrito de compras vacío. ¡Añade un artículo navegando por nuestro sitio!</p>
     
   </div>`
-  } else {
-    listadocarrito.splice(i, 1);
-    document.getElementById(`item${i}`).remove();
+  }
+}
+
+function cargarArticulos(array) {
+  let counter = 0;
+  document.getElementById("listacarrito").innerHTML = "";
+  for (let i = 0; i < array.length; i++) {
+    let element = array[i];
+    let sub = element.unitCost * element.count
+    counter++;
+    document.getElementById("listacarrito").innerHTML += `<tr id="item${[i]}">
+        <th scope="row"></th>
+        <td>${counter}</td>
+        <td><img src="${element.src}"style="width:60px;"></td>
+        <td>${element.name}</td>
+        <td>${element.unitCost} ${element.currency}</td>
+        <td>
+        <div class="input-group mb-3 mx-auto" "><input type="Number" id="cantidad${[i]}" onchange="modificarSubtotal(${element.unitCost},${i})" class="mx-auto form-control" placeholder="Cantidad" value="${element.count}" aria-label="Username" aria-describedby="addon-wrapping" min="1";></div></td>
+        <td><div class="row"><div class="col subtotal" id="subtotal${[i]}">${sub}</div><div class="col">${element.currency}</div></div></td>
+        <td onclick="eliminar(${[i]})"><button type="button" class="btn btn-outline-danger">✘</button></td>
+      </tr>  `;
     calcTotal();
   }
 }
+document.addEventListener("DOMContentLoaded", function (e) {
+  getJSONData(CART_2_CURRENCY).then(function (result) {
+    if (result.status === "ok") {
+      listadocarrito = result.data.articles;
+      cargarArticulos(listadocarrito);
+    }
+
+
+  });
+});
